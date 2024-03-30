@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springmybatis3jdbc.domain.TodoMapper">
+<!--    <resultMap id="todoRes" type="com.example.springmybatis3jdbc.domain.Todo">-->
+<!--        <result property="todoId" column="todo_id"/>-->
+<!--        <result property="todoTitle" column="todo_title"/>-->
+<!--        <result property="finished" column="finished"/>-->
+<!--        <result property="createdAt" column="created_at"/>-->
+<!--    </resultMap>-->
+
+<!--    <insert id="insert" parameterType="org.springframework.data.jdbc.mybatis.MyBatisContext"-->
+<!--        useGeneratedKeys="true" keyProperty="id">-->
+<!--        <![CDATA[-->
+<!--        INSERT INTO todo (todo_title, finished, created_at) VALUES (#{instance.todoTitle}, #{instance.finished}, #{instance.createdAt})-->
+<!--        RETURNING todo_id;-->
+<!--        ]]>-->
+<!--    </insert>-->
+<!--    <update id="update" parameterType="org.springframework.data.jdbc.mybatis.MyBatisContext">-->
+<!--        UPDATE todo SET todo_title = #{instance.todoTitle}, finished = #{instance.finished}, created_at = #{instance.createdAt} WHERE todo_id = #{instance.id}-->
+<!--    </update>-->
+<!--    <select id="findById" parameterType="Long" resultMap="todoRes">-->
+<!--        select * from todo where todo_id = #{id}-->
+<!--    </select>-->
+<!--    <select id="findAll" resultMap="todoRes">-->
+<!--        SELECT * FROM todo LIMIT 5;-->
+<!--    </select>-->
+<!--    <delete id="delete">-->
+<!--        DELETE FROM todo WHERE todo_id = #{id}-->
+<!--    </delete>-->
+<!--    <select id="count" resultType="Long">-->
+<!--        SELECT COUNT(*) FROM todo WHERE finished = 'FALSE';-->
+<!--    </select>-->
+</mapper>

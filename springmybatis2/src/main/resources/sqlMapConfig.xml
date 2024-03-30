@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings
+        cacheModelsEnabled="true"
+        enhancementEnabled="true"
+        lazyLoadingEnabled="true"
+        maxRequests="512"
+        maxSessions="128"
+        maxTransactions="32"
+        useStatementNamespaces="true"
+        defaultStatementTimeout="5"
+      />
+    <sqlMap resource="TodoMapper.xml" />
+    <typeHandler javaType="java.time.LocalDateTime" callback="com.example.springmybatis2.typehandler.LocalDateTimeCallback"/>
+</sqlMapConfig>

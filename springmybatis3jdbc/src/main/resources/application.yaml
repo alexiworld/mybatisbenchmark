@@ -1,0 +1,24 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      spring.h2.console.settings.web-allow-others: false
+
+  datasource:
+#    url: jdbc:h2:mem:vehicledb;DB_CLOSE_DELAY=-1;MODE=MySQL;NON_KEYWORDS=USER
+#    username: sa
+#    password: #password
+#    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
+
+#logging:
+#  level:
+#    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+#    org.springframework.jdbc.core: TRACE
+#    org.springframework.data: DEBUG
+#    java.sql: TRACE
+#    com.example.springmybatis3jdbc.domain.TodoMapper: DEBUG

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.example.springmybatis2.domain.TodoMapper">
+
+    <typeAlias alias="LocalDateTimeCallback" type="com.example.springmybatis2.typehandler.LocalDateTimeCallback"/>
+
+    <resultMap id="todoRes" class="com.example.springmybatis2.domain.Todo">
+        <result property="todoId" column="todo_id"/>
+        <result property="todoTitle" column="todo_title"/>
+        <result property="finished" column="finished"/>
+        <result property="createdAt" column="created_at" typeHandler="LocalDateTimeCallback"/>
+    </resultMap>
+
+    <insert id="insert" parameterClass="com.example.springmybatis2.domain.Todo">
+        <![CDATA[
+        INSERT
+        INTO todo (todo_title, finished, created_at) VALUES (
+            #todoTitle#,
+            #finished#,
+            #createdAt,handler=LocalDateTimeCallback#
+        )
+        RETURNING todo_id;
+        ]]>
+        <selectKey resultClass="Integer" keyProperty="todoId" type="post">
+            SELECT currval(pg_get_serial_sequence('todo', 'todo_id'))
+        </selectKey>
+    </insert>
+    <statement id="insertStatement" parameterClass="com.example.springmybatis2.domain.Todo" resultClass="int">
+        <![CDATA[
+        INSERT
+        INTO todo (todo_title, finished, created_at) VALUES (
+            #todoTitle#,
+            #finished#,
+            #createdAt,handler=LocalDateTimeCallback#
+        )
+        RETURNING todo_id;
+        ]]>
+    </statement>
+    <update id="update" parameterClass="com.example.springmybatis2.domain.Todo">
+        UPDATE todo SET todo_title = #todoTitle#, finished = #finished#, created_at = #createdAt,handler=LocalDateTimeCallback# WHERE todo_id = #todoId#
+    </update>
+    <select id="findById" parameterClass="Integer" resultMap="todoRes">
+        select * from todo where todo_id =  #id#
+    </select>
+    <select id="findAll" resultMap="todoRes">
+        SELECT * FROM todo LIMIT 5;
+    </select>
+    <delete id="delete">
+        DELETE FROM todo WHERE todo_id = #value#
+    </delete>
+    <select id="count" resultClass="Long">
+        SELECT COUNT(*) FROM todo WHERE finished = 'FALSE';
+    </select>
+    <statement id="init">
+        drop table if exists todo;
+        create table if not exists todo (
+            todo_id serial primary key,
+            todo_title varchar(30),
+            finished boolean,
+            created_at timestamp
+        );
+    </statement>
+
+</sqlMap>

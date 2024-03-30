@@ -1,0 +1,10 @@
+curl http://localhost:8080/rest/v1/benchmark/xml
+curl http://localhost:8080/rest/v1/benchmark/xml
+curl http://localhost:8080/rest/v1/benchmark/xml
+curl http://localhost:8080/rest/v1/benchmark/xml
+curl http://localhost:8080/rest/v1/benchmark/xml
+curl http://localhost:8080/rest/v1/benchmark/java
+curl http://localhost:8080/rest/v1/benchmark/java
+curl http://localhost:8080/rest/v1/benchmark/java
+curl http://localhost:8080/rest/v1/benchmark/java
+curl http://localhost:8080/rest/v1/benchmark/java
