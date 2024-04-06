@@ -2,6 +2,7 @@ package com.example.springmybatis3dyna.config;
 
 import com.example.springmybatis3dyna.dao.TodoMapper;
 import com.example.springmybatis3dyna.domain.TodoJavaMapper;
+import com.example.springmybatis3dyna.domain.TodoScriptMapper;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -91,6 +92,7 @@ public class MyBatisConfig implements WebMvcConfigurer {
 //                new ClassPathResource("com/example/springmybatis3dyna/domain/TodoMapper.xml"));
         factoryBean.setDataSource(dataSource);
         factoryBean.getObject().getConfiguration().addMapper(TodoJavaMapper.class);
+        factoryBean.getObject().getConfiguration().addMapper(TodoScriptMapper.class);
         factoryBean.getObject().getConfiguration().addMapper(TodoMapper.class);
         return factoryBean.getObject();
     }
